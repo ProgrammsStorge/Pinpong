@@ -21,9 +21,9 @@ def _get_request(url: str) -> dict:
 with open("tmp.py","w+",encoding="utf-8") as file:
     textI=_get_request(updateUrl)
     if file.read()!=textI:
-        file.write(textI)
-    os.system("start update.bat")
-    exit()
+
+        os.system("start update.bat")
+        exit()
 
 pygame.init()
 screenW=1920/2
