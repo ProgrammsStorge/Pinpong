@@ -291,7 +291,7 @@ while True:
         sizeS=7
         size=5
         font = pygame.font.SysFont(None, 50)
-        text = font.render(str(f'Press u to update'), True, wallColor)
+        text = font.render(str(f'Press u to update. V1'), True, wallColor)
         screen.blit(text, (0, 0))
         if setting==True:
             wallsY[0] = y-50
