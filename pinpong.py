@@ -1,3 +1,4 @@
+#0
 import os
 import random
 import pygame
@@ -18,12 +19,6 @@ def _get_request(url: str) -> dict:
             return {"status_error": True, "message": "Ошибка при получении данных."}
     except requests.exceptions.RequestException as e:
         return {"status_error": True, "message": str(e)}
-with open("tmp.py","w+",encoding="utf-8") as file:
-    textI=_get_request(updateUrl)
-    if file.read()!=textI:
-        file.write(textI)
-        os.system("start update.bat")
-        exit()
 
 pygame.init()
 screenW=1920/2
@@ -295,7 +290,9 @@ while True:
         BackGround()
         sizeS=7
         size=5
-
+        font = pygame.font.SysFont(None, 50)
+        text = font.render(str(f'Press u to update'), True, wallColor)
+        screen.blit(text, (0, 0))
         if setting==True:
             wallsY[0] = y-50
             wallsY[1] = y - 50
@@ -394,6 +391,15 @@ while True:
         pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(0, backGroundY, screenW, screenH), 0)
         pygame.display.flip()
         for event in pygame.event.get():
+            if event.type==pygame.KEYDOWN:
+                if event.key==pygame.K_u:
+                    with open("tmp.py", "w+", encoding="utf-8") as file:
+                        textI = _get_request(updateUrl)
+                        if file.read() != textI:
+                            file.write(textI)
+                            os.system("start update.bat")
+                            exit()
+
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
