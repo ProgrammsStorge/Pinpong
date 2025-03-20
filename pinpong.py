@@ -1353,8 +1353,3 @@ while True:
             break
         #if boss==True and score[1] >0:
         #    break
-
-
-
-        
-
